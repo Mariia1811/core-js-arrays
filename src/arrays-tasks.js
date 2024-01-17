@@ -503,10 +503,11 @@ function findLongestIncreasingSubsequence(nums) {
   return (
     nums.reduce((acc, el, i) => {
       if (!nums[i - 1]) return [...acc];
-      if (el > nums[i - 1]) {
+      if (el > nums[i - 1] && nums.indexOf(acc[acc.length - 1]) === i) {
         return [...acc, el];
       }
-    }, []).length + 1
+      return acc;
+    }, []).length - 1
   );
 }
 
